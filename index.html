@@ -1,533 +1,530 @@
 <html>
-  <head>
-    <title>Roulette Dramatic</title>
-    <script type="text/javascript" src="Winwheel.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-      .the_wheel {
-        background-image: url(./wheel2.png);
-        background-repeat: no-repeat;
-        background-position: center;
-      }
-    </style>
-  </head>
-  <body class="bg-green-200">
-    <nav class="bg-gray-800 p-4">
-      <div class="container mx-auto flex justify-between items-center">
-        <div class="text-white font-bold text-xl">Roulette Dramatic</div>
-      </div>
-    </nav>
 
-    <div class="m-4 bg-white rounded-md">
-      <div class="grid grid-cols-2 gap-4">
-        <div class="the_wheel flex justify-center items-center h-[582px]">
-          <canvas id="canvas" width="434" height="434">
-            <p style="text-align: center">
-              Sorry, your browser doesn't support canvas. Please try another.
-            </p>
-          </canvas>
+<head>
+  <title>Roulette Dramatic</title>
+  <script type="text/javascript" src="Winwheel.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+  <style>
+    .the_wheel {
+      background-image: url(./wheel2.png);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    body {
+            font-family: 'Jaro', sans-serif;
+        }
+  </style>
+</head>
+
+<body class="bg-green-200">
+  <nav class="bg-gray-800 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="text-white font-bold text-xl">Roulette Dramatic</div>
+    </div>
+  </nav>
+
+  <div class="m-4 bg-white rounded-md">
+    <div class="grid grid-cols-2 gap-4">
+      <div class="the_wheel flex justify-center items-center h-[582px]">
+        <canvas id="canvas" width="434" height="434">
+          <p style="text-align: center">
+            Sorry, your browser doesn't support canvas. Please try another.
+          </p>
+        </canvas>
+      </div>
+      <div class="w-full h-full p-4">
+        <div class="flex items-center w-full px-4 h-16 mb-4 rounded-[3rem] border-2 border-black p-2">
+          <button class="bg-blue-300 px-2 py-1 rounded-lg border boder-black hover:bg-blue-600 text-dark"
+            onclick="gantiWheel(0)">
+            Wheel 1
+          </button>
+          <div id="ttipe"></div>
+          <button id="tambahWheel"
+            class="bg-green-500 px-2 py-1 rounded-xl border boder-black hover:bg-green-900 text-dark ml-2">
+            +
+          </button>
         </div>
-        <div class="w-full h-full p-4">
-          <div
-            class="flex items-center w-full px-4 h-16 mb-4 rounded-[3rem] border-2 border-black p-2"
-          >
-            <button
-              class="bg-blue-300 px-2 py-1 rounded-lg border boder-black hover:bg-blue-600 text-dark"
-              onclick="gantiWheel(0)"
-            >
-              Wheel 1
-            </button>
-            <div id="ttipe"></div>
-            <button
-              id="tambahWheel"
-              class="bg-green-500 px-2 py-1 rounded-xl border boder-black hover:bg-green-900 text-dark ml-2"
-            >
-              +
-            </button>
-          </div>
-          <div
-            id="tunsur"
-            class="flex items-center w-full px-4 h-16 mb-4 rounded-[3rem] border-2 border-black p-2"
-          >
-            <button
-              class="bg-blue-300 px-2 py-1 rounded-lg border boder-black hover:bg-blue-600 text-dark"
-              onclick="gantiUnsur(0)"
-            >
-              Nama
-            </button>
-            <button
-              class="bg-yellow-300 px-2 py-1 rounded-lg border boder-black hover:bg-yellow-600 text-dark"
-              onclick="gantiUnsur(1)"
-            >
-              Profesi
-            </button>
-            <button
-              class="bg-red-300 px-2 py-1 rounded-lg border boder-black hover:bg-red-600 text-dark"
-              onclick="gantiUnsur(2)"
-            >
-              Sifat
-            </button>
-            <button
-              class="bg-green-300 px-2 py-1 rounded-lg border boder-black hover:bg-green-600 text-dark"
-              onclick="gantiUnsur(3)"
-            >
-              Jalan cerita
-            </button>
-          </div>
-          <div class="w-full h-96 rounded-[3rem] border-2 border-black p-2">
-            <div class="border-b-4 border-black flex justify-between">
-              <h2 class="text-4xl mx-4 my-2" id="ttl">Nama</h2>
-              <div class="flex items-center px-4">
-                <button
-                  id="setting"
-                  class="bg-blue-200 rounded-xl border border-black font-bold px-2 py-1"
-                >
-                  Kecepatan
-                </button>
-              </div>
+        <div id="tunsur" class="flex items-center w-full px-4 h-16 mb-4 rounded-[3rem] border-2 border-black p-2">
+          <button class="bg-blue-300 px-2 py-1 rounded-lg border boder-black hover:bg-blue-600 text-dark"
+            onclick="gantiUnsur(0)">
+            Nama
+          </button>
+          <button class="bg-yellow-300 px-2 py-1 rounded-lg border boder-black hover:bg-yellow-600 text-dark"
+            onclick="gantiUnsur(1)">
+            Profesi
+          </button>
+          <button class="bg-red-300 px-2 py-1 rounded-lg border boder-black hover:bg-red-600 text-dark"
+            onclick="gantiUnsur(2)">
+            Sifat
+          </button>
+          <button class="bg-green-300 px-2 py-1 rounded-lg border boder-black hover:bg-green-600 text-dark"
+            onclick="gantiUnsur(3)">
+            Jalan cerita
+          </button>
+        </div>
+        <div class="w-full h-96 rounded-[3rem] border-2 border-black p-2">
+          <div class="border-b-4 border-black flex justify-between">
+            <h2 class="text-4xl mx-4 my-2" id="ttl">Nama</h2>
+            <div class="flex items-center px-4">
+              <button id="setting" class="bg-blue-200 rounded-xl border border-black font-bold px-2 py-1">
+                Kecepatan
+              </button>
             </div>
-            <div class="py-4 py-2">
-              <div class="grid grid-cols-5 gap-4">
-                <input
-                  id="opsi"
-                  type="text"
-                  class="col-span-4 bg-gray-200 border-2 border-black rounded-lg p-2"
-                  placeholder="Input Text Here"
-                />
-                <button
-                  id="tambah"
-                  class="bg-green-400 border-2 border-black rounded-lg p-2"
-                >
-                  Tambah
-                </button>
-              </div>
-            </div>
-            <div class="w-full border-b-2 border-black"></div>
-            <table
-              id="table"
-              class="table-auto bg-white border-collapse w-full"
-            ></table>
           </div>
+          <div class="py-4 py-2">
+            <div class="grid grid-cols-5 gap-4">
+              <input id="opsi" type="text" class="col-span-4 bg-gray-200 border-2 border-black rounded-lg p-2"
+                placeholder="Input Text Here" />
+              <button id="tambah" class="bg-green-400 border-2 border-black rounded-lg p-2">
+                Tambah
+              </button>
+            </div>
+          </div>
+          <div class="w-full border-b-2 border-black"></div>
+          <table id="table" class="table-auto bg-white border-collapse w-full"></table>
         </div>
       </div>
     </div>
-    <script>
-      var hasil = "";
-      var urlParams = new URLSearchParams(window.location.search);
+  </div>
 
-      var wheelPower = urlParams.has("wheelpower")
-        ? parseInt(urlParams.get("wheelpower"))
-        : 3;
+  <script>
+    window.onload = function () {
+      // Membuat objek Audio
+      var audiobgm = new Audio("bgm.mp3");
 
-      var durasi = urlParams.has("durasi")
-        ? parseInt(urlParams.get("durasi"))
-        : 3;
-      var wk = 0;
-      var round = 0;
+      audiobgm.loop = true;
+      audiobgm.volume = 0.6;
 
-      var wheelSpinning = false;
-      var theWheel;
-      var segm = [
-        [
-          {
-            added: 0,
-            title: "Nama",
-            data: [
-              { fillStyle: "#ee1c24", text: "Budi", textFontSize: 24 },
-              { fillStyle: "#3cb878", text: "Sinta", textFontSize: 22 },
-              { fillStyle: "#f6989d", text: "Dono", textFontSize: 24 },
-              { fillStyle: "#00aef0", text: "Intan", textFontSize: 22 },
-              { fillStyle: "#f26522", text: "Wira", textFontSize: 24 },
-            ],
-          },
-          {
-            added: 0,
-            title: "Profesi",
-            data: [
-              { fillStyle: "#ee1c24", text: "Tukang kebun", textFontSize: 16 },
-              { fillStyle: "#3cb878", text: "Murid", textFontSize: 22 },
-              { fillStyle: "#f6989d", text: "Murid", textFontSize: 22 },
-              { fillStyle: "#00aef0", text: "Guru", textFontSize: 22 },
-              { fillStyle: "#f26522", text: "Orang tua", textFontSize: 18 },
-            ],
-          },
-          {
-            added: 0,
-            title: "Sifat",
-            data: [
-              {
-                fillStyle: "#ee1c24",
-                text: "Optimis & Bergaul",
-                textFontSize: 14,
-              },
-              {
-                fillStyle: "#3cb878",
-                text: "Pemarah & Kasar",
-                textFontSize: 14,
-              },
-              { fillStyle: "#f6989d", text: "Serakah", textFontSize: 20 },
-              { fillStyle: "#00aef0", text: "Sombong", textFontSize: 20 },
-              {
-                fillStyle: "#f26522",
-                text: "Penyabar & Ramah",
-                textFontSize: 14,
-              },
-            ],
-          },
-          {
-            added: 0,
-            title: "Jalan Cerita",
-            data: [
-              {
-                fillStyle: "#ee1c24",
-                text: "Kemauannya Terpenuhi",
-                textFontSize: 14,
-              },
-              { fillStyle: "#3cb878", text: "Selalu Sial", textFontSize: 18 },
-              {
-                fillStyle: "#f6989d",
-                text: "Perlakuaan tidak adil",
-                textFontSize: 14,
-              },
-              {
-                fillStyle: "#00aef0",
-                text: "Hubungan Gagal",
-                textFontSize: 17,
-              },
-              {
-                fillStyle: "#f26522",
-                text: "Menyelesaikan masalah",
-                textFontSize: 14,
-              },
-            ],
-          },
-        ],
-      ];
-      function newW() {
-        theWheel = new Winwheel({
-          outerRadius: 210, // Set outer radius so wheel fits inside the background.
-          innerRadius: 75, // Make wheel hollow so segments don't go all way to center.
-          textFontSize: 11, // Set default font size for the segments.
-          textOrientation: "curved", // Make text vertial so goes down from the outside of wheel.
-          textAlignment: "outer", // Align text to outside of wheel.
-          textFontFamily: "Verdana",
-          numSegments: segm[wk][round].data.length, // Specify number of segments.
-          segments: segm[wk][round].data,
-          // Specify the animation to use.
-          animation: {
-            type: "spinToStop",
-            duration: durasi, // Duration in seconds.
-            spins: 3, // Default number of complete spins.
-            callbackFinished: alertPrize,
-            callbackSound: playSound,
-            soundTrigger: "pin",
-          },
-          pins: {
-            number: segm[wk][round].data.length,
-          },
-        });
-
-        function startSpin() {
-          // Ensure that spinning can't be clicked again while already running.
-          if (wheelSpinning == false) {
-            // Based on the power level selected adjust the number of spins for the wheel, the more times is has
-            // to rotate with the duration of the animation the quicker the wheel spins.
-            if (wheelPower == 1) {
-              theWheel.animation.spins = 3;
-            } else if (wheelPower == 2) {
-              theWheel.animation.spins = 6;
-            } else if (wheelPower == 3) {
-              theWheel.animation.spins = 9;
-            }
-
-            // Begin the spin animation by calling startAnimation on the wheel object.
-            theWheel.startAnimation();
-
-            // Set to true so that power can't be changed and spin button re-enabled during
-            // the current animation. The user will have to reset before spinning again.
-            wheelSpinning = true;
-          }
-        }
-        document
-          .getElementById("canvas")
-          .addEventListener("click", function () {
-            startSpin();
-          });
-      }
-      document.getElementById("tambah").addEventListener("click", function () {
-        var opsiValue = document.getElementById("opsi").value;
-        if (segm[wk][round].added == 0) {
-          segm[wk][round].added = 1;
-          segm[wk][round].data = []; // Mengosongkan array data
-        }
-        var fontSize;
-        if (opsiValue.length < 6) {
-          fontSize = 24;
-        } else if (opsiValue.length < 10) {
-          fontSize = 18;
-        } else {
-          fontSize = 14;
-        }
-
-        segm[wk][round].data.push({
-          fillStyle: getRandomColor(),
-          text: opsiValue,
-          textFontSize: fontSize,
-        });
-
-        newW();
-        newT();
-        document.getElementById("opsi").value = "";
+      document.body.addEventListener('click', function () {
+        audiobgm.play();
       });
-      newW();
+    }
 
-      function getRandomColor() {
-        var letters = "0123456789ABCDEF";
-        var color = "#";
-        for (var i = 0; i < 6; i++) {
-          color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-      }
 
-      function resetWheel() {
-        if (wk == 0) {
-          if (round == 4) {
-            // Swal.fire({
-            //   title: "Mendapatkan ",
-            //   html: hasil,
-            //   imageUrl: "hadiah.png",
-            //   imageWidth: 150,
-            //   imageHeight: 150,
-            //   imageAlt: "Custom image",
-            // }).then(() => {
-            //   hasil = "";
-            //   round = 0;
-            //   newW();
-            //   document.getElementById("ttl").innerHTML = segm[wk][round].title;
-            //   newT();
-            // });
-            hasil = "";
-            round = 0;
-            newW();
-            document.getElementById("ttl").innerHTML = segm[wk][round].title;
-            newT();
-          } else {
-            newW();
-            document.getElementById("ttl").innerHTML = segm[wk][round].title;
-            newT();
-          }
-        }
-      }
+    var hasil = "";
+    var urlParams = new URLSearchParams(window.location.search);
 
-      function alertPrize(indicatedSegment) {
-        wheelSpinning = false;
-        Swal.fire({
-          title: segm[wk][round].title,
-          text: "" + indicatedSegment.text,
-          imageUrl: "hadiah.png",
-          imageWidth: 150,
-          imageHeight: 150,
-          imageAlt: "Custom image",
-        }).then(() => {
-          if (wk == 0) {
-            hasil +=
-              segm[wk][round].title + " : " + indicatedSegment.text + "<br>";
-            round++;
-            resetWheel();
-          } else {
-            newW();
-          }
-        });
-      }
+    var wheelPower = urlParams.has("wheelpower")
+      ? parseInt(urlParams.get("wheelpower"))
+      : 3;
 
-      var audio = new Audio("tick.mp3"); // Create audio object and load tick.mp3 file.
+    var durasi = urlParams.has("durasi")
+      ? parseInt(urlParams.get("durasi"))
+      : 3;
+    var wk = 0;
+    var round = 0;
 
-      function playSound() {
-        // Stop and rewind the sound if it already happens to be playing.
-        audio.pause();
-        audio.currentTime = 0;
-
-        // Play the sound.
-        audio.play();
-      }
-
-      document.getElementById("setting").addEventListener("click", function () {
-        Swal.fire({
-          title: "Masukkan Power Wheel (1-3)",
-          input: "text",
-          inputAttributes: {
-            autocapitalize: "off",
-          },
-          showCancelButton: true,
-          confirmButtonText: "Next",
-          showLoaderOnConfirm: true,
-          preConfirm: (power) => {
-            return new Promise((resolve) => {
-              resolve(power);
-            });
-          },
-          allowOutsideClick: () => !Swal.isLoading(),
-        }).then((result) => {
-          if (result.isConfirmed) {
-            var wp = result.value;
-
-            Swal.fire({
-              title: "Masukkan Durasi Wheel (1-10)",
-              input: "text",
-              inputAttributes: {
-                autocapitalize: "off",
-              },
-              showCancelButton: true,
-              confirmButtonText: "Submit",
-              showLoaderOnConfirm: true,
-              preConfirm: (durasi) => {
-                return new Promise((resolve) => {
-                  resolve(durasi);
-                });
-              },
-              allowOutsideClick: () => !Swal.isLoading(),
-            }).then((result) => {
-              if (result.isConfirmed) {
-                var d = result.value;
-                // Tambah SweetAlert konfirmasi
-                Swal.fire({
-                  title: "Apa anda yakin?",
-                  text: "Data akan direset kembali ke awal",
-                  icon: "warning",
-                  showCancelButton: true,
-                  confirmButtonColor: "#3085d6",
-                  cancelButtonColor: "#d33",
-                  confirmButtonText: "Ya!",
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    // Redirect dengan menyertakan parameter
-                    window.location.href = `index.html?wheelpower=${wp}&durasi=${d}`;
-                  }
-                });
-              }
-            });
-          }
-        });
+    var wheelSpinning = false;
+    var theWheel;
+    var segm = [
+      [
+        {
+          added: 0,
+          title: "Nama",
+          data: [
+            { fillStyle: "#ee1c24", text: "Budi", textFontSize: 24 },
+            { fillStyle: "#3cb878", text: "Sinta", textFontSize: 22 },
+            { fillStyle: "#f6989d", text: "Dono", textFontSize: 24 },
+            { fillStyle: "#00aef0", text: "Intan", textFontSize: 22 },
+            { fillStyle: "#f26522", text: "Wira", textFontSize: 24 },
+          ],
+        },
+        {
+          added: 0,
+          title: "Profesi",
+          data: [
+            { fillStyle: "#ee1c24", text: "Tukang kebun", textFontSize: 16 },
+            { fillStyle: "#3cb878", text: "Murid", textFontSize: 22 },
+            { fillStyle: "#f6989d", text: "Murid", textFontSize: 22 },
+            { fillStyle: "#00aef0", text: "Guru", textFontSize: 22 },
+            { fillStyle: "#f26522", text: "Orang tua", textFontSize: 18 },
+          ],
+        },
+        {
+          added: 0,
+          title: "Sifat",
+          data: [
+            {
+              fillStyle: "#ee1c24",
+              text: "Optimis & Bergaul",
+              textFontSize: 14,
+            },
+            {
+              fillStyle: "#3cb878",
+              text: "Pemarah & Kasar",
+              textFontSize: 14,
+            },
+            { fillStyle: "#f6989d", text: "Serakah", textFontSize: 20 },
+            { fillStyle: "#00aef0", text: "Sombong", textFontSize: 20 },
+            {
+              fillStyle: "#f26522",
+              text: "Penyabar & Ramah",
+              textFontSize: 14,
+            },
+          ],
+        },
+        {
+          added: 0,
+          title: "Jalan Cerita",
+          data: [
+            {
+              fillStyle: "#ee1c24",
+              text: "Kemauannya Terpenuhi",
+              textFontSize: 14,
+            },
+            { fillStyle: "#3cb878", text: "Selalu Sial", textFontSize: 18 },
+            {
+              fillStyle: "#f6989d",
+              text: "Perlakuaan tidak adil",
+              textFontSize: 14,
+            },
+            {
+              fillStyle: "#00aef0",
+              text: "Hubungan Gagal",
+              textFontSize: 17,
+            },
+            {
+              fillStyle: "#f26522",
+              text: "Menyelesaikan masalah",
+              textFontSize: 14,
+            },
+          ],
+        },
+      ],
+    ];
+    function newW() {
+      theWheel = new Winwheel({
+        outerRadius: 210, // Set outer radius so wheel fits inside the background.
+        innerRadius: 75, // Make wheel hollow so segments don't go all way to center.
+        textFontSize: 11, // Set default font size for the segments.
+        textOrientation: "curved", // Make text vertial so goes down from the outside of wheel.
+        textAlignment: "outer", // Align text to outside of wheel.
+        textFontFamily: "Verdana",
+        numSegments: segm[wk][round].data.length, // Specify number of segments.
+        segments: segm[wk][round].data,
+        // Specify the animation to use.
+        animation: {
+          type: "spinToStop",
+          duration: durasi, // Duration in seconds.
+          spins: 3, // Default number of complete spins.
+          callbackFinished: alertPrize,
+          callbackSound: playSound,
+          soundTrigger: "pin",
+        },
+        pins: {
+          number: segm[wk][round].data.length,
+        },
       });
 
-      function newT() {
-        // Get the table element
-        var table = document.getElementById("table");
+      function startSpin() {
+        // Ensure that spinning can't be clicked again while already running.
+        if (wheelSpinning == false) {
+          // Based on the power level selected adjust the number of spins for the wheel, the more times is has
+          // to rotate with the duration of the animation the quicker the wheel spins.
+          if (wheelPower == 1) {
+            theWheel.animation.spins = 3;
+          } else if (wheelPower == 2) {
+            theWheel.animation.spins = 6;
+          } else if (wheelPower == 3) {
+            theWheel.animation.spins = 9;
+          }
 
-        // Get the data for the current round
-        var roundData = segm[wk][round].data;
+          // Begin the spin animation by calling startAnimation on the wheel object.
+          theWheel.startAnimation();
 
-        // Clear previous table rows
-        table.innerHTML = "";
-
-        if (segm[wk][round].added == 1) {
-          // Iterate over the data and create table rows
-          roundData.forEach((data, index) => {
-            // Create a table row
-            var row = document.createElement("tr");
-
-            // Create the 'text' column
-            var textCell = document.createElement("td");
-            textCell.textContent = data.text;
-            textCell.classList.add("border", "px-4", "py-2"); // Add Tailwind CSS classes for styling
-            row.appendChild(textCell);
-
-            // Create the 'hapus' column
-            var hapusCell = document.createElement("td");
-            hapusCell.textContent = "hapus";
-            hapusCell.classList.add(
-              "border",
-              "px-4",
-              "py-2",
-              "text-center",
-              "text-red-500"
-            ); // Add Tailwind CSS classes for styling
-
-            // Add click event listener to hapusCell
-            hapusCell.addEventListener("click", function () {
-              // Remove the corresponding data from segm array
-              segm[wk][round].data.splice(index, 1);
-              // Remove the row from the table
-              table.removeChild(row);
-              // Call updateWhe function
-              newW(round);
-            });
-
-            row.appendChild(hapusCell);
-
-            // Append the row to the table
-            table.appendChild(row);
-          });
+          // Set to true so that power can't be changed and spin button re-enabled during
+          // the current animation. The user will have to reset before spinning again.
+          wheelSpinning = true;
         }
       }
-      function getButtonColor(wk) {
-        if (wk % 3 === 0) {
-          return "bg-blue-300 hover:bg-blue-600"; // Kuning untuk kelipatan 3
-        } else if (wk % 2 === 0) {
-          return "bg-red-300 hover:bg-red-600"; // Merah untuk kelipatan 2
-        } else {
-          return "bg-yellow-300 hover:bg-yellow-600"; // Biru untuk nilai lainnya
-        }
-      }
-
       document
-        .getElementById("tambahWheel")
+        .getElementById("canvas")
         .addEventListener("click", function () {
-          wk++;
-          round = 0;
-          hasil = "";
-          if (!segm[wk]) {
-            segm[wk] = [];
-          }
-          segm[wk].push({
-            added: 0,
-            title: "tambahan " + wk,
-            data: [
-              { fillStyle: "#ee1c24", text: "Opsi 1", textFontSize: 24 },
-              { fillStyle: "#3cb878", text: "Opsi 2", textFontSize: 24 },
-            ],
-          });
-          newW();
-          newT();
-          var newButton = document.createElement("button");
-          var buttonText = document.createTextNode("Wheel " + wk);
-
-          newButton.className =
-            getButtonColor(wk) +
-            " px-2 py-1 rounded-lg border boder-black text-dark";
-
-          // Menambahkan onclick attribute dengan gantiWheel dan indeks wk
-          newButton.setAttribute("onclick", "gantiWheel(" + wk + ")");
-          newButton.appendChild(buttonText);
-          var ttipeDiv = document.getElementById("ttipe");
-          ttipeDiv.appendChild(newButton);
-          document.getElementById("tunsur").style.display = "none";
+          startSpin();
         });
+    }
+    document.getElementById("tambah").addEventListener("click", function () {
+      var opsiValue = document.getElementById("opsi").value;
+      if (segm[wk][round].added == 0) {
+        segm[wk][round].added = 1;
+        segm[wk][round].data = []; // Mengosongkan array data
+      }
+      var fontSize;
+      if (opsiValue.length < 6) {
+        fontSize = 24;
+      } else if (opsiValue.length < 10) {
+        fontSize = 18;
+      } else {
+        fontSize = 14;
+      }
 
-      function gantiWheel(kwk) {
-        if (kwk == 0) {
-          // Jika kwk sama dengan 0, tampilkan elemen dengan id "tuser"
-          document.getElementById("tunsur").style.display = "block";
+      segm[wk][round].data.push({
+        fillStyle: getRandomColor(),
+        text: opsiValue,
+        textFontSize: fontSize,
+      });
+
+      newW();
+      newT();
+      document.getElementById("opsi").value = "";
+    });
+    newW();
+
+    function getRandomColor() {
+      var letters = "0123456789ABCDEF";
+      var color = "#";
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    function resetWheel() {
+      if (wk == 0) {
+        if (round == 4) {
+          // Swal.fire({
+          //   title: "Mendapatkan ",
+          //   html: hasil,
+          //   imageUrl: "hadiah.png",
+          //   imageWidth: 150,
+          //   imageHeight: 150,
+          //   imageAlt: "Custom image",
+          // }).then(() => {
+          //   hasil = "";
+          //   round = 0;
+          //   newW();
+          //   document.getElementById("ttl").innerHTML = segm[wk][round].title;
+          //   newT();
+          // });
+          hasil = "";
+          round = 0;
+          newW();
+          document.getElementById("ttl").innerHTML = segm[wk][round].title;
+          newT();
         } else {
-          // Jika kwk tidak sama dengan 0, sembunyikan elemen dengan id "tuser"
-          document.getElementById("tunsur").style.display = "none";
+          newW();
+          document.getElementById("ttl").innerHTML = segm[wk][round].title;
+          newT();
         }
+      }
+    }
 
-        wk = kwk;
-        hasil = "";
+    function alertPrize(indicatedSegment) {
+      wheelSpinning = false;
+      var audiowin = new Audio("menang.mp3");
+
+      audiowin.volume = 0.6;
+      audiowin.play();
+      Swal.fire({
+        title: segm[wk][round].title,
+        text: "" + indicatedSegment.text,
+        imageUrl: "hadiah.png",
+        imageWidth: 150,
+        imageHeight: 150,
+        imageAlt: "Custom image",
+      }).then(() => {
+        if (wk == 0) {
+          hasil +=
+            segm[wk][round].title + " : " + indicatedSegment.text + "<br>";
+          round++;
+          resetWheel();
+        } else {
+          newW();
+        }
+      });
+    }
+
+    var audio = new Audio("tick.mp3"); // Create audio object and load tick.mp3 file.
+
+    function playSound() {
+      // Stop and rewind the sound if it already happens to be playing.
+      audio.pause();
+      audio.currentTime = 0;
+
+      // Play the sound.
+      audio.play();
+    }
+
+    document.getElementById("setting").addEventListener("click", function () {
+      Swal.fire({
+        title: "Masukkan Power Wheel (1-3)",
+        input: "text",
+        inputAttributes: {
+          autocapitalize: "off",
+        },
+        showCancelButton: true,
+        confirmButtonText: "Next",
+        showLoaderOnConfirm: true,
+        preConfirm: (power) => {
+          return new Promise((resolve) => {
+            resolve(power);
+          });
+        },
+        allowOutsideClick: () => !Swal.isLoading(),
+      }).then((result) => {
+        if (result.isConfirmed) {
+          var wp = result.value;
+
+          Swal.fire({
+            title: "Masukkan Durasi Wheel (1-10)",
+            input: "text",
+            inputAttributes: {
+              autocapitalize: "off",
+            },
+            showCancelButton: true,
+            confirmButtonText: "Submit",
+            showLoaderOnConfirm: true,
+            preConfirm: (durasi) => {
+              return new Promise((resolve) => {
+                resolve(durasi);
+              });
+            },
+            allowOutsideClick: () => !Swal.isLoading(),
+          }).then((result) => {
+            if (result.isConfirmed) {
+              var d = result.value;
+              // Tambah SweetAlert konfirmasi
+              Swal.fire({
+                title: "Apa anda yakin?",
+                text: "Data akan direset kembali ke awal",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya!",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  // Redirect dengan menyertakan parameter
+                  window.location.href = `index.html?wheelpower=${wp}&durasi=${d}`;
+                }
+              });
+            }
+          });
+        }
+      });
+    });
+
+    function newT() {
+      // Get the table element
+      var table = document.getElementById("table");
+
+      // Get the data for the current round
+      var roundData = segm[wk][round].data;
+
+      // Clear previous table rows
+      table.innerHTML = "";
+
+      if (segm[wk][round].added == 1) {
+        // Iterate over the data and create table rows
+        roundData.forEach((data, index) => {
+          // Create a table row
+          var row = document.createElement("tr");
+
+          // Create the 'text' column
+          var textCell = document.createElement("td");
+          textCell.textContent = data.text;
+          textCell.classList.add("border", "px-4", "py-2"); // Add Tailwind CSS classes for styling
+          row.appendChild(textCell);
+
+          // Create the 'hapus' column
+          var hapusCell = document.createElement("td");
+          hapusCell.textContent = "hapus";
+          hapusCell.classList.add(
+            "border",
+            "px-4",
+            "py-2",
+            "text-center",
+            "text-red-500"
+          ); // Add Tailwind CSS classes for styling
+
+          // Add click event listener to hapusCell
+          hapusCell.addEventListener("click", function () {
+            // Remove the corresponding data from segm array
+            segm[wk][round].data.splice(index, 1);
+            // Remove the row from the table
+            table.removeChild(row);
+            // Call updateWhe function
+            newW(round);
+          });
+
+          row.appendChild(hapusCell);
+
+          // Append the row to the table
+          table.appendChild(row);
+        });
+      }
+    }
+    function getButtonColor(wk) {
+      if (wk % 3 === 0) {
+        return "bg-blue-300 hover:bg-blue-600"; // Kuning untuk kelipatan 3
+      } else if (wk % 2 === 0) {
+        return "bg-red-300 hover:bg-red-600"; // Merah untuk kelipatan 2
+      } else {
+        return "bg-yellow-300 hover:bg-yellow-600"; // Biru untuk nilai lainnya
+      }
+    }
+
+    document
+      .getElementById("tambahWheel")
+      .addEventListener("click", function () {
+        wk++;
         round = 0;
+        hasil = "";
+        if (!segm[wk]) {
+          segm[wk] = [];
+        }
+        segm[wk].push({
+          added: 0,
+          title: "tambahan " + wk,
+          data: [
+            { fillStyle: "#ee1c24", text: "Opsi 1", textFontSize: 24 },
+            { fillStyle: "#3cb878", text: "Opsi 2", textFontSize: 24 },
+          ],
+        });
         newW();
         newT();
+        var newButton = document.createElement("button");
+        var buttonText = document.createTextNode("Wheel " + wk);
+
+        newButton.className =
+          getButtonColor(wk) +
+          " px-2 py-1 rounded-lg border boder-black text-dark";
+
+        // Menambahkan onclick attribute dengan gantiWheel dan indeks wk
+        newButton.setAttribute("onclick", "gantiWheel(" + wk + ")");
+        newButton.appendChild(buttonText);
+        var ttipeDiv = document.getElementById("ttipe");
+        ttipeDiv.appendChild(newButton);
+        document.getElementById("tunsur").style.display = "none";
+      });
+
+    function gantiWheel(kwk) {
+      if (kwk == 0) {
+        // Jika kwk sama dengan 0, tampilkan elemen dengan id "tuser"
+        document.getElementById("tunsur").style.display = "block";
+      } else {
+        // Jika kwk tidak sama dengan 0, sembunyikan elemen dengan id "tuser"
+        document.getElementById("tunsur").style.display = "none";
       }
-      function gantiUnsur(kr) {
-        round = kr;
-        newW()
-        newT()
-        document.getElementById("ttl").innerHTML = segm[wk][round].title;
-      }
-    </script>
-  </body>
+
+      wk = kwk;
+      hasil = "";
+      round = 0;
+      newW();
+      newT();
+    }
+    function gantiUnsur(kr) {
+      round = kr;
+      newW()
+      newT()
+      document.getElementById("ttl").innerHTML = segm[wk][round].title;
+    }
+  </script>
+</body>
+
 </html>
